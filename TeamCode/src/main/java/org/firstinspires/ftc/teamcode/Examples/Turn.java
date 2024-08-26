@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.Examples;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
@@ -11,9 +11,11 @@ import org.firstinspires.ftc.robotcore.external.navigation.YawPitchRollAngles;
 public class Turn extends OpMode {
     IMU imu;
     YawPitchRollAngles facing;
+
     @Override
     public void init() {
         imu = (IMU) hardwareMap.get("imu");
+
     }
 
     @Override
@@ -21,6 +23,6 @@ public class Turn extends OpMode {
         facing = imu.getRobotYawPitchRollAngles();
         double yaw = facing.getYaw(AngleUnit.DEGREES);
 
-        telemetry.addData("",yaw);
+        telemetry.addData("", yaw);
     }
 }
