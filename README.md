@@ -1,7 +1,7 @@
 # 2024-2025
 2024-2025 FTC Season Code
+## Into The Deep
 
-## Season Name: Into The Deep
-- season reveal: April 20th
-- kickoff: September 7th
+![image](https://github.com/user-attachments/assets/6137188a-4d88-40b5-81ca-25d392d1cebd)
+
 
