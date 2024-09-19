@@ -17,15 +17,10 @@ public class Main extends OpMode {
 
 
 
-
-
-
-
-
     @Override
     public void init() {
 
-         fl = (DcMotor) hardwareMap.get("fl");
+        fl = (DcMotor) hardwareMap.get("fl");
         fr = (DcMotor) hardwareMap.get("fr");
         bl = (DcMotor) hardwareMap.get("bl");
         br = (DcMotor) hardwareMap.get("br");
@@ -37,16 +32,14 @@ public class Main extends OpMode {
     @Override
     public void loop() {
         // > means up, < means down. It's built like an airplane. //
-        if (gamepad1.left_stick_y < 0){
+        if (gamepad1.left_stick_y < 0) {
 
             fl.setPower(1);
             fr.setPower(1);
             bl.setPower(1);
             br.setPower(1);
 
-        }
-
-        else if (gamepad1.left_stick_y > 0){
+        } else if (gamepad1.left_stick_y > 0) {
 
             fl.setPower(-1);
             fr.setPower(-1);
@@ -54,57 +47,30 @@ public class Main extends OpMode {
             br.setPower(-1);
             //this will make the robot reverse //
 
-    }
+        }
 
         // the robot will go this way --> and this way <--- //
-        else if (gamepad1.left_stick_x < 0){
+        else if (gamepad1.left_stick_x < 0) {
 // when left joystick is pulled left, robot moves left. //
             fl.setPower(-1);
             fr.setPower(1);
             bl.setPower(1);
             br.setPower(-1);
-        }
-
-        else if (gamepad1.left_stick_x > 0){
-           // when left joystick is pulled right, robot move right //
+        } else if (gamepad1.left_stick_x > 0) {
+            // when left joystick is pulled right, robot move right //
             fl.setPower(1);
             fr.setPower(-1);
             bl.setPower(-1);
             br.setPower(1);
-        }
-
-     else if (gamepad1.right_stick_x > 0){
-            // when right joytick pulled right, robot turns right //
+        } else if (gamepad1.right_stick_x > 0) {
+            // when right joystick pulled right, robot turns right //
 
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
     }
+}
 
 
 
