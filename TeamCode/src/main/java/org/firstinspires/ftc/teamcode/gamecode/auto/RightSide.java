@@ -9,12 +9,14 @@
 * */
 
 
-package org.firstinspires.ftc.teamcode.auto;
+package org.firstinspires.ftc.teamcode.gamecode.auto;
 
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
+
+import org.firstinspires.ftc.teamcode.innercode.operations.input.Turn;
 
 @Autonomous
 public class RightSide extends LinearOpMode {
@@ -25,7 +27,7 @@ public class RightSide extends LinearOpMode {
     DcMotor br;
     // motor variables for drive
 
-
+    Turn turn;
 
 
     DcMotor leftOdom;
@@ -56,7 +58,11 @@ public class RightSide extends LinearOpMode {
 
         waitForStart();
 
-        resetOdom();
+        turn.main(90);
+
+
+
+        // resetOdom(); // reset the odometry wheels for future use.
 
     }
 }
