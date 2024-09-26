@@ -16,6 +16,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
+import org.firstinspires.ftc.teamcode.innercode.operations.input.AprilTag;
 import org.firstinspires.ftc.teamcode.innercode.operations.input.Turn;
 
 @Autonomous
@@ -59,6 +60,8 @@ public class RightSide extends LinearOpMode {
         waitForStart();
 
         turn.main(90);
+        AprilTag tag = new AprilTag();
+
 
 
 

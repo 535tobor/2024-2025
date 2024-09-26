@@ -25,7 +25,7 @@ public class AprilTag {
 
     public static AprilTagProcessor aprilTag;
 
-    public static void initAprilTag(HardwareMap mapHardware, String CameraName, Telemetry telemetry) {
+    public void initAprilTag(HardwareMap mapHardware, String CameraName, Telemetry telemetry) {
 
         try {
             // Create the AprilTag processor
@@ -44,7 +44,7 @@ public class AprilTag {
 
     // setAprilTagVariables is used for setting up the april tag
     // to use if statement for if desired tag is found use the tagName variable bellow
-    public static void setAprilTagVariables() {
+    public void setAprilTagVariables() {
         // add AprilTag found information to set variables
 
         List<AprilTagDetection> currentDetections = aprilTag.getDetections();
