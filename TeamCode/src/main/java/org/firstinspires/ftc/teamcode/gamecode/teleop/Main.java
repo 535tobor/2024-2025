@@ -17,7 +17,6 @@ public class Main extends OpMode {
     DcMotor br;
 
 
-
     @Override
     public void init() {
 
@@ -49,27 +48,53 @@ public class Main extends OpMode {
             //this will make the robot reverse //
 
         }
+//
+//        // the robot will go this way --> and this way <--- //
+//        if (gamepad1.left_stick_x < 0) {
+//// when left joystick is pulled left, robot moves left.sideways //
+//            fl.setPower(-1);
+//            fr.setPower(1);
+//            bl.setPower(1);
+//            br.setPower(-1);
+//        } else if (gamepad1.left_stick_x > 0) {
+//            // when left joystick is pulled right, robot move right sideways //
+//            fl.setPower(1);
+//            fr.setPower(-1);
+//            bl.setPower(-1);
+//            br.setPower(1);
+        }
+//        if (gamepad1.left_stick_x < 0 && gamepad1.left_stick_y < 0) //northwest of left joystick//
+//            fl.setPower(1);
+//        fr.setPower(0);
+//        bl.setPower(1);
+//        br.setPower(0);
 
-        // the robot will go this way --> and this way <--- //
-        else if (gamepad1.left_stick_x < 0) {
-// when left joystick is pulled left, robot moves left. //
-            fl.setPower(-1);
-            fr.setPower(1);
-            bl.setPower(1);
-            br.setPower(-1);
-        } else if (gamepad1.left_stick_x > 0) {
-            // when left joystick is pulled right, robot move right //
+
+        if (gamepad1.right_stick_x > 0) {
+            // when right joystick pulled right, robot turns right //
             fl.setPower(1);
             fr.setPower(-1);
-            bl.setPower(-1);
-            br.setPower(1);
-        } else if (gamepad1.right_stick_x > 0) {
-            // when right joystick pulled right, robot turns right //
-
+            bl.setPower(1);
+            br.setPower(-1);
         }
 
+        if (gamepad1.right_stick_x < 0) {
+            // when right joystick pulled left, robot turns left //
+            fl.setPower(-1);
+            fr.setPower(1);
+            bl.setPower(-1);
+            br.setPower(1);
+
+        }
+        else{
+            fl.setPower(0);
+            fr.setPower(0);
+            bl.setPower(0);
+            br.setPower(0); }
     }
+
 }
+
 
 
 
