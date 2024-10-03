@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.gamecode.teleop;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.Servo;
 
 
 @TeleOp
@@ -15,7 +16,10 @@ public class Main extends OpMode {
     DcMotor fr;
     DcMotor bl;
     DcMotor br;
-
+    Servo wrist;
+    Servo claw;
+    DcMotor shaft;
+    DcMotor arm;
 
     @Override
     public void init() {
@@ -24,50 +28,32 @@ public class Main extends OpMode {
         fr = (DcMotor) hardwareMap.get("fr");
         bl = (DcMotor) hardwareMap.get("bl");
         br = (DcMotor) hardwareMap.get("br");
-
+        wrist = (Servo) hardwareMap.get("wrist");
+        claw = (Servo) hardwareMap.get("claw");
+        shaft = (DcMotor) hardwareMap.get("shaft");
+        arm = (DcMotor) hardwareMap.get("arm");
         fr.setDirection(DcMotor.Direction.REVERSE);
         br.setDirection(DcMotor.Direction.REVERSE);
     }
 
     @Override
     public void loop() {
-        // > means up, < means down. It's built like an airplane. //
-        if (gamepad1.left_stick_y < 0) {
+        if (gamepad1.left_stick_y < 0) {  //this is flipped so the joystick will act normal for drivers//
+        //forward//
+            fl.setPower(-1);
+            fr.setPower(-1);
+            bl.setPower(-1);
+            br.setPower(-1);
+
+        } else if (gamepad1.left_stick_y > 0) {
 
             fl.setPower(1);
             fr.setPower(1);
             bl.setPower(1);
             br.setPower(1);
-
-        } else if (gamepad1.left_stick_y > 0) {
-
-            fl.setPower(-1);
-            fr.setPower(-1);
-            bl.setPower(-1);
-            br.setPower(-1);
             //this will make the robot reverse //
 
         }
-//
-//        // the robot will go this way --> and this way <--- //
-//        if (gamepad1.left_stick_x < 0) {
-//// when left joystick is pulled left, robot moves left.sideways //
-//            fl.setPower(-1);
-//            fr.setPower(1);
-//            bl.setPower(1);
-//            br.setPower(-1);
-//        } else if (gamepad1.left_stick_x > 0) {
-//            // when left joystick is pulled right, robot move right sideways //
-//            fl.setPower(1);
-//            fr.setPower(-1);
-//            bl.setPower(-1);
-//            br.setPower(1);
-        }
-//        if (gamepad1.left_stick_x < 0 && gamepad1.left_stick_y < 0) //northwest of left joystick//
-//            fl.setPower(1);
-//        fr.setPower(0);
-//        bl.setPower(1);
-//        br.setPower(0);
 
 
         if (gamepad1.right_stick_x > 0) {
@@ -85,15 +71,62 @@ public class Main extends OpMode {
             bl.setPower(-1);
             br.setPower(1);
 
+
         }
-        else{
+
+
+          else if(gamepad1.dpad_up){
+            wrist.setPosition(6);
+
+        }
+        else if(gamepad1.dpad_down){
+
+            claw.setPosition(1);
+        }
+        //this is to close the claw//
+        else if(gamepad1.y){
+            claw.setPosition(0);
+
+        }
+
+        else if (gamepad1.right_stick_y < 0){
+
+            arm.setPower(1);
+
+        }
+
+
+        else if (gamepad1.right_stick_y > 0){
+
+            arm.setPower(-1);
+        }
+        else if (gamepad1.dpad_left){
+
+            shaft.setPower(-1);
+        }
+
+        else if (gamepad1.dpad_right){
+
+            shaft.setPower(1);
+        }
+
+        else {
             fl.setPower(0);
             fr.setPower(0);
             bl.setPower(0);
-            br.setPower(0); }
+            br.setPower(0);
+            arm.setPower(0);
+            shaft.setPower(0);
+        }
+
+
+
+
     }
 
+
 }
+
 
 
 
