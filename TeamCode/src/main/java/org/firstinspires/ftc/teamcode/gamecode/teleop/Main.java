@@ -21,6 +21,8 @@ public class Main extends OpMode {
     DcMotor shaft;
     DcMotor arm;
     Boolean ONCELER = false;
+    Double wristValue = 0.0;
+    Boolean notYet = false;
 
     @Override
     public void init() {
@@ -100,7 +102,7 @@ public class Main extends OpMode {
 
          else if (gamepad2.y){
 
-             claw.setPosition(1);
+             claw.setPosition(0.5);
         }
 
 
@@ -110,16 +112,17 @@ public class Main extends OpMode {
             bl.setPower(0);
             br.setPower(0);
             shaft.setPower(0);
+
         }
 
 
 
-         if (gamepad1.dpad_down){
+         if (gamepad2.dpad_down){
 
             arm.setPower(1);
         }
 
-        else if (gamepad1.dpad_up){
+        else if (gamepad2.dpad_up){
 
             arm.setPower(-1);
         } else{
@@ -128,9 +131,55 @@ public class Main extends OpMode {
          }
 
 
+          if (gamepad2.left_trigger > 0){
+
+              wrist.setPosition(0.7);
+
+              telemetry.addData("wrist goes up", wrist.getPosition());
+        }
+           else if (gamepad2.right_trigger > 0){
+
+               telemetry.addData("wrist goes down", wrist.getPosition());
+
+              wrist.setPosition(0.3);
+
+           }
 
 
+           if (gamepad2.left_bumper){
+               if(!notYet){
+                   notYet = true;
+               }
+               else{
+                   wristValue += 0.01;
+
+                   wrist.setPosition(wristValue);
+
+                   telemetry.addData("wrist moves up slightly",wrist.getPosition());
+
+               }
+
+
+           }
+
+            else  if (gamepad2.right_bumper){
+            if(!notYet){
+                notYet = true;
+            }
+            else{
+                wristValue -= 0.01;
+
+                wrist.setPosition(wristValue);
+
+                telemetry.addData("wrist down up slightly",wrist.getPosition());
+
+            }
+
+
+        }
     }
+
+
 
 
 }
