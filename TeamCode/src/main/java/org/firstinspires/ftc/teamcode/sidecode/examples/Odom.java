@@ -13,6 +13,7 @@
 package org.firstinspires.ftc.teamcode.sidecode.examples;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
@@ -52,6 +53,7 @@ class Pos {
 }
 
 
+@Disabled
 @Autonomous
 public class Odom extends LinearOpMode {
     // setting variables
